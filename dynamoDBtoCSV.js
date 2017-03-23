@@ -19,7 +19,7 @@ var dynamoDB = new AWS.DynamoDB();
 
 var query = {
     "TableName": program.table,
-    "Limit": 1000,
+    "Limit": 10,
 };
 
 
@@ -47,7 +47,8 @@ var scanDynamoDB = function(query) {
             printout(data.Items) // Print out the subset of results.
             if (data.LastEvaluatedKey) { // Result is incomplete; there is more to come.
                 query.ExclusiveStartKey = data.LastEvaluatedKey;
-                scanDynamoDB(query);
+		// repeat in 1 second
+                setTimeout(scanDynamoDB(query), 1000);
             };
         } else console.dir(err);
 
