@@ -19,7 +19,7 @@ var dynamoDB = new AWS.DynamoDB();
 
 var query = {
     "TableName": program.table,
-    "Limit": 1,
+    "Limit": 10,
 };
 
 
