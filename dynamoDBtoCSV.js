@@ -47,7 +47,7 @@ var scanDynamoDB = function(query) {
             printout(data.Items) // Print out the subset of results.
             if (data.LastEvaluatedKey) { // Result is incomplete; there is more to come.
                 query.ExclusiveStartKey = data.LastEvaluatedKey;
-		for (var i = 0; i < 10000; i++)
+		for (var i = 0; i < 1000; i++)
 		  for (var j = 0; j < 100000; j++)
 		    ; // sleep
                 scanDynamoDB(query);
